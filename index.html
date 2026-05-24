@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+    <title>utilityCSS</title>
+    <link rel="stylesheet" href="util.css">
+    <style>
+        pre {
+            overflow: auto;
+        }
+
+        th,
+        td,
+        .border {
+            border: 1px solid black;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-x -center" style="padding:0 1em 0 1em;">
+        <div class="cell -12 -9_medium -7_large">
+            <h1 class="-text-center">utilityCSS</h1>
+            <p><b>utilityCSS</b> is a purely functional stylesheet consist of only the most essential styles required
+                for a reliable starting point for your design.</p>
+            <p>What does <b>utilityCSS</b> include:</p>
+            <ul>
+                <li>a slightly modified version of <a target="_blank"
+                        href="https://github.com/necolas/normalize.css">normalize.css</a> by necolas</li>
+                <li>an impeccable grid system inspired by <a target="_blank"
+                        href="https://get.foundation/sites/docs/xy-grid.html">Foundation</a></li>
+                <li>aspect ratio classes</li>
+                <li>positioning classes (absolute, relative, fixed...) and including text and background positions</li>
+                <li>visibility classes</li>
+                <li>basic print styles</li>
+                <li>lastly media queries (medium, large and print) that can be used for all of the features mentioned
+                    above</li>
+            </ul>
+            <p><b>utilityCSS</b> only gives you the basic tools and it tries to be as "unopinionated" as possible, so
+                it <b>DOESN'T</b> include any design specific
+                styles, such as:</p>
+            <ul>
+                <li>text and background colors (except for the print layout)</li>
+                <li>sizing classes</li>
+                <li>display classes (except display none included in visibility classes)</li>
+                <li>margin, padding, border classes</li>
+                <li>box and text shadows</li>
+                <li>any kind of pre-made components (such as cards, modals, tooltips etc..)</li>
+            </ul>
+            <h1 class="-text-center">Table of Contents</h1>
+            <div class="grid-x -center">
+                <div class="cell -auto">
+                    <ol>
+                        <li><a href="#grid">Grid System</a></li>
+                        <li><a href="#ratio">Aspect Ratio</a></li>
+                        <li><a href="#pos">Positioning</a></li>
+                        <li><a href="#vis">Visibility</a></li>
+                        <li><a href="#print">Print Styles</a></li>
+                        <li><a href="#media">Media Queries</a></li>
+                    </ol>
+                </div>
+            </div>
+            <h1 id="grid">Grid System</h1>
+            <p>Grid system in <b>utilityCSS</b> is over-engineered to be as consistent as possible for all kind of
+                situations and
+                problems (and of course CSS quirks) regarding to positioning that you might stumble upon while designing
+                the elements of your
+                website. Classes are diluted and always serves a meaningful purpose that tackles each and every single
+                edge-case.</p>
+            <p>As mentioned before the inspiration for this grid system comes from <a target="_blank"
+                    href="https://get.foundation/sites/docs/xy-grid.html">Foundation</a>, and what I mean by inspiration
+                is; only some of the class names, seperation of rows (grid-x) and columns (grid-y) and media query
+                sizes. Other than that, all of the CSS properties are completely different under the hood and
+                codes between <b>utilityCSS</b> and <b>Foundation</b> are obviously <b>NOT INTERCHANGABLE</b> even
+                though they
+                might look similar.</p>
+            <p>Let's start with the basic steps:</p>
+            <h2>GRID-X</h2>
+            <div class="grid-x -debug">
+                <div class="cell">cell</div>
+                <div class="cell -1">cell -1</div>
+                <div class="cell -2">cell -2</div>
+                <div class="cell -3">cell -3</div>
+                <div class="cell -4">cell -4</div>
+                <div class="cell -5">cell -5</div>
+                <div class="cell -6">cell -6</div>
+                <div class="cell -7">cell -7</div>
+                <div class="cell -8">cell -8</div>
+                <div class="cell -9">cell -9</div>
+                <div class="cell -10">cell -10</div>
+                <div class="cell -11">cell -11</div>
+                <div class="cell -12">cell -12</div>
+                <div class="cell -auto">cell -auto</div>
+                <div class="cell -fill">cell -fill</div>
+            </div>
+            <pre><code>
+                &lt;div class="grid-x">
+                    &lt;div class="cell">cell&lt;/div>
+                    &lt;div class="cell -1">cell -1&lt;/div>
+                    &lt;div class="cell -2">cell -2&lt;/div>
+                    &lt;div class="cell -3">cell -3&lt;/div>
+                    &lt;div class="cell -4">cell -4&lt;/div>
+                    &lt;div class="cell -5">cell -5&lt;/div>
+                    &lt;div class="cell -6">cell -6&lt;/div>
+                    &lt;div class="cell -7">cell -7&lt;/div>
+                    &lt;div class="cell -8">cell -8&lt;/div>
+                    &lt;div class="cell -9">cell -9&lt;/div>
+                    &lt;div class="cell -10">cell -10&lt;/div>
+                    &lt;div class="cell -11">cell -11&lt;/div>
+                    &lt;div class="cell -12">cell -12&lt;/div>
+                    &lt;div class="cell -auto">cell -auto&lt;/div>
+                    &lt;div class="cell -fill">cell -fill&lt;/div>
+                &lt;/div>
+            </code></pre>
+            <hr>
+            <h2>GRID-Y</h2>
+            <div class="grid-y -frame-y -debug">
+                <div class="cell">cell</div>
+                <div class="cell -1">cell -1</div>
+                <div class="cell -2">cell -2</div>
+                <div class="cell -3">cell -3</div>
+                <div class="cell -4">cell -4</div>
+                <div class="cell -5">cell -5</div>
+                <div class="cell -6">cell -6</div>
+                <div class="cell -7">cell -7</div>
+                <div class="cell -8">cell -8</div>
+                <div class="cell -9">cell -9</div>
+                <div class="cell -10">cell -10</div>
+                <div class="cell -11">cell -11</div>
+                <div class="cell -12">cell -12</div>
+                <div class="cell -auto">cell -auto</div>
+                <div class="cell -fill">cell -fill</div>
+            </div>
+            <pre><code>
+                &lt;div class="grid-y -frame-y">
+                    &lt;div class="cell">cell&lt;/div>
+                    &lt;div class="cell -1">cell -1&lt;/div>
+                    &lt;div class="cell -2">cell -2&lt;/div>
+                    &lt;div class="cell -3">cell -3&lt;/div>
+                    &lt;div class="cell -4">cell -4&lt;/div>
+                    &lt;div class="cell -5">cell -5&lt;/div>
+                    &lt;div class="cell -6">cell -6&lt;/div>
+                    &lt;div class="cell -7">cell -7&lt;/div>
+                    &lt;div class="cell -8">cell -8&lt;/div>
+                    &lt;div class="cell -9">cell -9&lt;/div>
+                    &lt;div class="cell -10">cell -10&lt;/div>
+                    &lt;div class="cell -11">cell -11&lt;/div>
+                    &lt;div class="cell -12">cell -12&lt;/div>
+                    &lt;div class="cell -auto">cell -auto&lt;/div>
+                    &lt;div class="cell -fill">cell -fill&lt;/div>
+                &lt;/div>
+            </code></pre>
+            <hr>
+            <p>If you are new to CSS in general, most if not all grid systems for the web use 12 divisions. The
+                reason for that is, 12 is the smallest number that can be divided into wide range of numbers (2,
+                3, 4 and 6) which grants the ability to shape our design to our liking. The power of 12 can be even seen
+                in our daily lives, for example it is the same reason why we have 12/24 hour clock cycles and 12
+                months.
+            </p>
+            <p>As you might noticed, there are also <b>-auto</b> and <b>-fill</b> classes. <b>-auto</b> sets the size
+                dynamically based on the content in the cell and <b>-fill</b> as the name suggests, fills the remaining
+                row or
+                column (depending on if it is <b>grid-x</b> or <b>grid-y</b>). Lastly, a <b>cell</b> without any sizing
+                classes will act like as if they have <b>-auto</b> class.</p>
+            <p><b>grid-x</b> and <b>grid-y</b> classes by default, have flex-wrap property set to wrap. Additionally,
+                both grids
+                and cells have max-width and max-height of 100% and overflow is set to auto, so that they can
+                accommodate overflowing children without any data loss.</p>
+            <p>There are few things to consider, <b>grid-y</b> which is flex column, needs a height property in
+                order to work, that is because, cells are defined with percentage values (except <b>-auto</b> and
+                <b>-fill</b> as they are special). And in CSS, percentage values
+                are based on the size of the parent element. So if
+                you don't set a height to the <b>grid-y</b> element, cells cannot get a reference point for
+                percentage, In the example, we used <b>-frame-y</b> class to set the grid height to viewport, which most
+                of the time thats what it is needed, but might not always be applicable depending on what you are
+                actually
+                designing. For <b>grid-x</b> element, you don't need to set a width because, by default flexbox
+                layout behaves like a block element which automatically takes up all the width space of the parent.
+            </p>
+            <hr>
+            <h2>Grid and Cell Property Classes</h2>
+            <p>There are classes that can be attached to grid and cell elements to set certain properties, these are
+                mostly properties unique to flexbox layout in CSS. One difference is however, <b>utilityCSS</b>
+                streamlined the <b>justify-content</b>, <b>align-items</b> and <b>align-self</b> properties with
+                <b>-top</b>, <b>-left</b>, <b>-center</b>... classes, so that it can be understood easier at first
+                glance.
+            </p>
+            <p>It is not included in the list below, but <b>-debug</b> property class can be attached to any element to
+                see their borders just like in the examples. Borders are color coded; blue for grids, cyan for cells and
+                red for everything else.</p>
+            <h3>Grid Property Classes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</td>
+                        <th>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>-full</b></td>
+                        <td>Sets the grid height to 100%.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-frame-x</b></td>
+                        <td>Sets the grid width to viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-frame-y</b></td>
+                        <td>Sets the grid height to viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-frame</b></td>
+                        <td>Sets the grid size to viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-reverse</b></td>
+                        <td>Reverses the cell order.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-overflow</b></td>
+                        <td>Removes max-size limits and forces overflowing content to be visible (You may also need to
+                            add -overflow to cells, since they also have max-size limit).</td>
+                    </tr>
+                    <tr>
+                        <td><b>-wrap</b></td>
+                        <td>Automatically divide cells into multiple rows or columns when they exceed
+                            the grid size (Default).</td>
+                    </tr>
+                    <tr>
+                        <td><b>-nowrap</b></td>
+                        <td>Disables wrapping so cells are divided into a single row or column.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-wrap-reverse</b></td>
+                        <td>Wrap the rows or columns in reverse order.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-left</b></td>
+                        <td>Horizontally aligns the cells to left (Default).</td>
+                    </tr>
+                    <tr>
+                        <td><b>-center</b></td>
+                        <td>Horizontally aligns the cells to center.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-right</b></td>
+                        <td>Horizontally aligns the cells to right.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-between</b></td>
+                        <td>Equally divides the row or column with spaces in between the cells.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-around</b></td>
+                        <td>Equally divides the row or column with spaces in between and around the cells.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-top</b></td>
+                        <td>Vertically aligns the cells to top.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-middle</b></td>
+                        <td>Vertically aligns the cells to center.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-bottom</b></td>
+                        <td>Vertically aligns the cells to bottom.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-stretch</b></td>
+                        <td>Stretches out the cells to opposite direction of grid.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-baseline</b></td>
+                        <td>Positions the cells to the text base line, where the cells with different font-sizes, will
+                            be centered accordingly (hard to explain even harder to visualize, mostly never used but it
+                            exists).</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Cell Property Classes</h3>
+            <table>
+                <thead>
+                    <th>Class</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>-[SIZE 1 to 12]</b></td>
+                        <td>Sets the cell to a specific size.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-auto</b></td>
+                        <td>Sets the size of the cell based on content inside.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-fill</b></td>
+                        <td>Fill the remaining space in row (grid-x) or column (grid-y).</td>
+                    </tr>
+                    <tr>
+                        <td><b>-full</b></td>
+                        <td>Sets the height of the cell to 100%.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-frame-x</b></td>
+                        <td>Sets the width of the cell to viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-frame-y</b></td>
+                        <td>Sets the height of the cell to viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-frame</b></td>
+                        <td>Sets the size of the cell to viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-overflow</b></td>
+                        <td>Removes the size limitations and forces the overflowing content inside the cell to be
+                            visible.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-push-[SIZE 1 to 12]</b></td>
+                        <td>Adds margin to the cell in grid start direction (left for grid-x, top for grid-y). Reverses
+                            if the grid has <b>-reverse</b> class.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-pull-[SIZE 1 to 12]</b></td>
+                        <td>Adds margin to the cell in grid end direction (right for grid-x, bottom for grid-y).
+                            Reverses if the grid has <b>-reverse</b> class.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-left</b></td>
+                        <td>Horizontally aligns the cell to left.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-center</b></td>
+                        <td>Horizontally aligns the cell to center.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-right</b></td>
+                        <td>Horizontally aligns the cell to right.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-top</b></td>
+                        <td>Vertically aligns the cell to top.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-middle</b></td>
+                        <td>Vertically aligns the cell to center.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-bottom</b></td>
+                        <td>Vertically aligns the cell to bottom.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-stretch</b></td>
+                        <td>Stretches out the cell in opposite direction of grid. It is default option and if it is used
+                            with other positioning classes <b>-stretch</b> will cancel them out depending on if it is
+                            grid-x or grid-y.</td>
+                    </tr>
+                    <tr>
+                        <td><b>-baseline</b></td>
+                        <td>Positions the cell to text base line, cancels out other positioning classes.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <p>With these property classes, you can pretty much do anything and everything regarding to positioning.
+                Here are some examples for visual clues.</p>
+            <div class="grid-x -debug">
+                <div class="cell -3 -middle">cell -3 -middle</div>
+                <div class="cell -3 -push-1" style="height: 100px;">
+                    cell -3 -push-1
+                    height 100px
+                </div>
+                <div class="cell -2 -right">cell -2 -right</div>
+                <div class="cell -auto">
+                    cell -auto
+                    START
+                    loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+                    END
+                </div>
+                <div class="cell -fill">cell -fill</div>
+                <div class="cell -2" style="height: 75px;">
+                    cell -2
+                    height 75px
+                </div>
+                <div class="cell -auto -bottom">cell -auto -bottom</div>
+                <div class="cell -4 -pull-1" style="height: 150px;">
+                    cell -4 -pull-1
+                    height 150px
+                </div>
+            </div>
+            <pre><code>
+                &lt;div class="grid-x -debug">
+                    &lt;div class="cell -3 -middle">cell -3 -middle&lt;/div>
+                    &lt;div class="cell -3 -push-1" style="height: 100px;">
+                        cell -3 -push-1
+                        height 100px
+                    &lt;/div>
+                    &lt;div class="cell -2 -right">cell -2 -right&lt;/div>
+                    &lt;div class="cell -auto">
+                        cell -auto
+                        START
+                        loremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsumloremipsum
+                        END
+                    &lt;/div>
+                    &lt;div class="cell -fill">cell -fill&lt;/div>
+                    &lt;div class="cell -2" style="height: 75px;">
+                        cell -2
+                        height 75px
+                    &lt;/div>
+                    &lt;div class="cell -auto -bottom">cell -auto -bottom&lt;/div>
+                    &lt;div class="cell -4 -pull-1" style="height: 150px;">
+                        cell -4 -pull-1
+                        height 150px
+                    &lt;/div>
+                &lt;/div>
+            </code></pre>
+            <hr>
+            <p>Here is an example, similar to one in <b>Foundation</b>, that combines both <b>grid-x</b> and
+                <b>grid-y</b>.
+            </p>
+            <div class="grid-y -frame-y -debug">
+                <div class="cell -auto">
+                    <h1>Grid Frame Header</h1>
+                </div>
+                <div class="cell -auto">
+                    <div class="grid-x">
+                        <div class="cell -4">cell -4</div>
+                        <div class="cell -4">
+                            <p style="width: 100vw;">This cell scrolls since the set width (100vw) of the paragraph
+                                exceeds the cell width.</p>
+                        </div>
+                        <div class="cell -4">cell -4</div>
+                    </div>
+                </div>
+                <div class="cell -fill">
+                    <div class="grid-x -full">
+                        <div class="cell -4">
+                            <h2>Independent scrolling sidebar</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id
+                                ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus
+                                vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue
+                                sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non
+                                vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet
+                                efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a
+                                sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum
+                                euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat
+                                efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus,
+                                dignissim tortor a, hendrerit risus.</p>
+                            <p>Suspendisse pulvinar, massa iaculis feugiat lobortis, dolor sapien vestibulum nulla, vel
+                                cursus tellus leo in lorem. Aliquam eu placerat urna. Suspendisse sed viverra orci, ut
+                                mattis neque. Fusce non ultrices nisi. In sagittis varius mollis. Quisque dolor quam,
+                                consectetur eu lacinia ac, ullamcorper vel arcu. Nullam mattis imperdiet nulla sed
+                                ornare. Praesent tristique, est id eleifend vestibulum, neque nibh condimentum ex, nec
+                                lobortis purus justo a libero. Phasellus id ex ac nunc hendrerit hendrerit. Nullam urna
+                                ipsum, rutrum at fringilla vel, venenatis non purus. Maecenas egestas ex vitae venenatis
+                                molestie. Ut et odio egestas, accumsan neque et, viverra nisl. Sed faucibus nec nulla
+                                sed imperdiet. Fusce quis sem ac urna semper tempor a id elit. Nulla fringilla vitae
+                                sapien a vehicula.</p>
+                        </div>
+                        <div class="cell -8">
+                            <h2>Independent scrolling body</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id
+                                ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus
+                                vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue
+                                sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non
+                                vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet
+                                efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a
+                                sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum
+                                euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat
+                                efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus,
+                                dignissim tortor a, hendrerit risus.</p>
+                            <p>Suspendisse pulvinar, massa iaculis feugiat lobortis, dolor sapien vestibulum nulla, vel
+                                cursus tellus leo in lorem. Aliquam eu placerat urna. Suspendisse sed viverra orci, ut
+                                mattis neque. Fusce non ultrices nisi. In sagittis varius mollis. Quisque dolor quam,
+                                consectetur eu lacinia ac, ullamcorper vel arcu. Nullam mattis imperdiet nulla sed
+                                ornare. Praesent tristique, est id eleifend vestibulum, neque nibh condimentum ex, nec
+                                lobortis purus justo a libero. Phasellus id ex ac nunc hendrerit hendrerit. Nullam urna
+                                ipsum, rutrum at fringilla vel, venenatis non purus. Maecenas egestas ex vitae venenatis
+                                molestie. Ut et odio egestas, accumsan neque et, viverra nisl. Sed faucibus nec nulla
+                                sed imperdiet. Fusce quis sem ac urna semper tempor a id elit. Nulla fringilla vitae
+                                sapien a vehicula.</p>
+                            <p>Nullam vestibulum lorem nec lectus egestas, nec ullamcorper diam maximus. Maecenas
+                                condimentum, nibh at blandit semper, ex erat tempus magna, id maximus neque velit
+                                accumsan nibh. Aenean dignissim lorem eu nisl laoreet vestibulum. Vivamus efficitur et
+                                augue vitae tincidunt. Etiam et magna felis. Integer mattis, nisi aliquet scelerisque
+                                blandit, ex mi sodales ante, eget accumsan quam magna et ligula. Curabitur id tristique
+                                leo. Proin rutrum mi vitae enim rhoncus, at cursus neque eleifend. Integer ultrices
+                                volutpat tellus ac porta. Fusce sollicitudin venenatis lacinia. Fusce ante lorem,
+                                gravida semper varius non, pharetra non erat. Sed dapibus arcu turpis, ac sollicitudin
+                                nibh lacinia vel. Nullam at enim porta, luctus metus sit amet, rutrum odio. Cras tempor
+                                enim vel pellentesque sollicitudin. Maecenas ullamcorper, sem non accumsan volutpat,
+                                neque tortor pulvinar orci, ut ultrices ligula lorem ut risus.</p>
+                            <p>Aliquam facilisis, nibh eget posuere suscipit, arcu sapien iaculis odio, in molestie
+                                dolor lectus vitae sem. Cras id nunc mollis mi rutrum dapibus. Quisque rutrum a augue at
+                                scelerisque. Praesent faucibus ac enim vitae gravida. Sed et sodales elit. Duis magna
+                                lectus, interdum sit amet metus a, sagittis varius magna. Proin nibh lectus, egestas a
+                                luctus ut, dapibus et enim. Curabitur fringilla ipsum vitae nunc imperdiet consectetur
+                                eget non neque. Suspendisse ultricies odio quis lorem vulputate, ac vulputate turpis
+                                feugiat. Maecenas posuere rhoncus orci, in ornare velit suscipit tempor. Curabitur
+                                pretium nisl id lorem placerat consequat. In quis quam eros. Nam mattis elit eu quam
+                                sagittis, in varius erat tempor.</p>
+                            <p>Fusce felis magna, pellentesque eget mollis a, rutrum id eros. Curabitur auctor varius
+                                arcu a consequat. Phasellus quis pulvinar enim, eu ultricies justo. Pellentesque risus
+                                libero, dapibus at erat ultricies, gravida varius erat. Vestibulum ante ipsum primis in
+                                faucibus orci luctus et ultrices posuere cubilia Curae; Nulla tempus, justo ut laoreet
+                                mollis, nunc tellus convallis urna, vel pretium dui velit eget ligula. Aliquam semper
+                                sed nulla a molestie. Maecenas at egestas massa, vitae aliquam mi. Fusce nec sem
+                                egestas, pretium lacus non, tincidunt sapien. Sed tristique odio at ultricies vulputate.
+                                Integer et convallis augue, eu aliquam enim. Mauris ut faucibus diam. Donec vulputate
+                                nunc sed congue accumsan. Etiam lobortis nisi quis lacinia pharetra.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -auto">
+                    <h3>Grid Frame Footer</h3>
+                </div>
+            </div>
+            <pre><code>
+                &lt;div class="grid-y -frame-y -debug">
+                    &lt;div class="cell -auto">
+                        &lt;h1>Grid Frame Header&lt;/h1>
+                    &lt;/div>
+                    &lt;div class="cell -auto">
+                        &lt;div class="grid-x">
+                            &lt;div class="cell -4">cell -4&lt;/div>
+                            &lt;div class="cell -4">
+                                &lt;p style="width: 100vw;">This cell scrolls since the set width (100vw) of the paragraph exceeds the cell width.&lt;/p>
+                            &lt;/div>
+                            &lt;div class="cell -4">cell -4&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="cell -fill">
+                        &lt;div class="grid-x -full">
+                            &lt;div class="cell -4">
+                                &lt;h2>Independent scrolling sidebar&lt;/h2>
+                                &lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus, dignissim tortor a, hendrerit risus.&lt;/p>
+                                &lt;p>Suspendisse pulvinar, massa iaculis feugiat lobortis, dolor sapien vestibulum nulla, vel cursus tellus leo in lorem. Aliquam eu placerat urna. Suspendisse sed viverra orci, ut mattis neque. Fusce non ultrices nisi. In sagittis varius mollis. Quisque dolor quam, consectetur eu lacinia ac, ullamcorper vel arcu. Nullam mattis imperdiet nulla sed ornare. Praesent tristique, est id eleifend vestibulum, neque nibh condimentum ex, nec lobortis purus justo a libero. Phasellus id ex ac nunc hendrerit hendrerit. Nullam urna ipsum, rutrum at fringilla vel, venenatis non purus. Maecenas egestas ex vitae venenatis molestie. Ut et odio egestas, accumsan neque et, viverra nisl. Sed faucibus nec nulla sed imperdiet. Fusce quis sem ac urna semper tempor a id elit. Nulla fringilla vitae sapien a vehicula.&lt;/p>
+                            &lt;/div>
+                            &lt;div class="cell -8">
+                                &lt;h2>Independent scrolling body&lt;/h2>
+                                &lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus, dignissim tortor a, hendrerit risus.&lt;/p>
+                                &lt;p>Suspendisse pulvinar, massa iaculis feugiat lobortis, dolor sapien vestibulum nulla, vel cursus tellus leo in lorem. Aliquam eu placerat urna. Suspendisse sed viverra orci, ut mattis neque. Fusce non ultrices nisi. In sagittis varius mollis. Quisque dolor quam, consectetur eu lacinia ac, ullamcorper vel arcu. Nullam mattis imperdiet nulla sed ornare. Praesent tristique, est id eleifend vestibulum, neque nibh condimentum ex, nec lobortis purus justo a libero. Phasellus id ex ac nunc hendrerit hendrerit. Nullam urna ipsum, rutrum at fringilla vel, venenatis non purus. Maecenas egestas ex vitae venenatis molestie. Ut et odio egestas, accumsan neque et, viverra nisl. Sed faucibus nec nulla sed imperdiet. Fusce quis sem ac urna semper tempor a id elit. Nulla fringilla vitae sapien a vehicula.&lt;/p>
+                                &lt;p>Nullam vestibulum lorem nec lectus egestas, nec ullamcorper diam maximus. Maecenas condimentum, nibh at blandit semper, ex erat tempus magna, id maximus neque velit accumsan nibh. Aenean dignissim lorem eu nisl laoreet vestibulum. Vivamus efficitur et augue vitae tincidunt. Etiam et magna felis. Integer mattis, nisi aliquet scelerisque blandit, ex mi sodales ante, eget accumsan quam magna et ligula. Curabitur id tristique leo. Proin rutrum mi vitae enim rhoncus, at cursus neque eleifend. Integer ultrices volutpat tellus ac porta. Fusce sollicitudin venenatis lacinia. Fusce ante lorem, gravida semper varius non, pharetra non erat. Sed dapibus arcu turpis, ac sollicitudin nibh lacinia vel. Nullam at enim porta, luctus metus sit amet, rutrum odio. Cras tempor enim vel pellentesque sollicitudin. Maecenas ullamcorper, sem non accumsan volutpat, neque tortor pulvinar orci, ut ultrices ligula lorem ut risus.&lt;/p>
+                                &lt;p>Aliquam facilisis, nibh eget posuere suscipit, arcu sapien iaculis odio, in molestie dolor lectus vitae sem. Cras id nunc mollis mi rutrum dapibus. Quisque rutrum a augue at scelerisque. Praesent faucibus ac enim vitae gravida. Sed et sodales elit. Duis magna lectus, interdum sit amet metus a, sagittis varius magna. Proin nibh lectus, egestas a luctus ut, dapibus et enim. Curabitur fringilla ipsum vitae nunc imperdiet consectetur eget non neque. Suspendisse ultricies odio quis lorem vulputate, ac vulputate turpis feugiat. Maecenas posuere rhoncus orci, in ornare velit suscipit tempor. Curabitur pretium nisl id lorem placerat consequat. In quis quam eros. Nam mattis elit eu quam sagittis, in varius erat tempor.&lt;/p>
+                                &lt;p>Fusce felis magna, pellentesque eget mollis a, rutrum id eros. Curabitur auctor varius arcu a consequat. Phasellus quis pulvinar enim, eu ultricies justo. Pellentesque risus libero, dapibus at erat ultricies, gravida varius erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla tempus, justo ut laoreet mollis, nunc tellus convallis urna, vel pretium dui velit eget ligula. Aliquam semper sed nulla a molestie. Maecenas at egestas massa, vitae aliquam mi. Fusce nec sem egestas, pretium lacus non, tincidunt sapien. Sed tristique odio at ultricies vulputate. Integer et convallis augue, eu aliquam enim. Mauris ut faucibus diam. Donec vulputate nunc sed congue accumsan. Etiam lobortis nisi quis lacinia pharetra.&lt;/p>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="cell -auto">
+                        &lt;h3>Grid Frame Footer&lt;/h3>
+                    &lt;/div>
+                &lt;/div>
+            </code></pre>
+            <hr>
+            <h1 id="ratio">Aspect Ratio</h1>
+            <p>Aspect ratio classes are defined to set a certain ratio of width and height to an element. There is
+                already an <a target="_blank" href="https://caniuse.com/?search=aspect-ratio">aspect-ratio</a> property
+                in CSS but it only has been added in 2021, which that means if you want to support older browsers, you
+                have to use a <a target="_blank" href="https://css-tricks.com/aspect-ratio-boxes/">different
+                    approach</a>.</p>
+            <p><b>utilityCSS</b>, <i>utilizes</i> the latter approach in these classes since it correlates better with
+                its aim of "universality".</p>
+            <div class="grid-x -middle -around">
+                <div class="cell -3">
+                    <div class="ratio -1x1" style="background-color: #f80;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">1x1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -3x2" style="background-color: #0f0;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">3x2</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -4x3" style="background-color: #ff0;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">4x3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -5x4" style="background-color: #f0f;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">5x4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -16x9" style="background-color: #ff0;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">16x9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -8x5" style="background-color: #f0f;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">16x10 / 8x5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -21x9" style="background-color: #0f0;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">21x9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -3">
+                    <div class="ratio -2x3" style="background-color: #f80;">
+                        <div class="grid-x -center -middle">
+                            <div class="cell -auto">2x3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pre><code>
+                &lt;div class="grid-x -middle -around">
+                    &lt;div class="cell -3">
+                        &lt;div class="ratio -1x1" style="background-color: #f80;">
+                            &lt;div class="grid-x -center -middle">
+                                &lt;div class="cell -auto">1x1&lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="cell -3">
+                        &lt;div class="ratio -3x2" style="background-color: #0f0;">
+                            &lt;div class="grid-x -center -middle">
+                                &lt;div class="cell -auto">3x2&lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="cell -3">
+                        &lt;div class="ratio -4x3" style="background-color: #ff0;">
+                            &lt;div class="grid-x -center -middle">
+                                &lt;div class="cell -auto">4x3&lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code></pre>
+            <hr>
+            <p><b>utilityCSS</b> includes only the most popular aspect ratios. Here is the complete list:</p>
+            <div class="grid-x -center">
+                <div class="cell -12 -6_medium -4_large">
+                    <div class="grid-x">
+                        <div class="cell -12 -text-center border"><b>Class</b></div>
+                        <div class="cell -auto border"><b>-1x1</b></div>
+                        <div class="cell -auto border"><b>-2x3</b></div>
+                        <div class="cell -auto border"><b>-3x2</b></div>
+                        <div class="cell -auto border"><b>-4x3</b></div>
+                        <div class="cell -auto border"><b>-3x4</b></div>
+                        <div class="cell -auto border"><b>-5x4</b></div>
+                        <div class="cell -auto border"><b>-4x5</b></div>
+                        <div class="cell -auto border"><b>-16x9</b></div>
+                        <div class="cell -auto border"><b>-9x16</b></div>
+                        <div class="cell -auto border"><b>-16x10 / -8x5</b></div>
+                        <div class="cell -auto border"><b>-10x16 / -5x8</b></div>
+                        <div class="cell -auto border"><b>-21x9</b></div>
+                        <div class="cell -auto border"><b>-9x21</b></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h1 id="pos">Positioning (Element, Background and Text)</h1>
+            <p>Apart from the grid system, <b>utilityCSS</b> also includes other positioning property classes that are
+                necessary for particular cases.
+            </p>
+            <h2>Positioning Elements</h2>
+            <p>These are native to CSS so if you don't know how to use them, I suggest you to check out
+                <a target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position">MDN</a>.
+            </p>
+            <div class="grid-x -center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Style</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>-relative</b></td>
+                            <td>position: relative;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-fixed</b></td>
+                            <td>position: fixed;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-absolute</b></td>
+                            <td>position: absolute;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-sticky</b></td>
+                            <td>position: sticky;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-static</b></td>
+                            <td>position: static;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="grid-x -center -middle">
+                <div class="cell -12 -6_medium">
+                    <div class="grid-x">
+                        <div class="cell -12 -text-center border"><b>Class</b></div>
+                        <div class="cell -4 border"><b>-top-left</b></div>
+                        <div class="cell -4 border"><b>-top-center</b>
+                        </div>
+                        <div class="cell -4 border"><b>-top-right</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-middle-left</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-middle-center</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-middle-right</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-bottom-left</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-bottom-center</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-bottom-right</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-top-left-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-top-center-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-top-right-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-right-top-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-right-center-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-right-bottom-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-bottom-left-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-bottom-center-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-bottom-right-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-left-top-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-left-center-outside</b>
+                        </div>
+                        <div class="cell -4 border">
+                            <b>-left-bottom-outside</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell -12 -6_medium" style="padding: 1em;">
+                    <div class="ratio -1x1">
+                        <div class="grid-x -center -middle -debug" style="padding: 2em;">
+                            <div class="cell -full -fill -relative -overflow">
+                                <div class="-absolute -top-left">X</div>
+                                <div class="-absolute -top-center">X</div>
+                                <div class="-absolute -top-right">X</div>
+
+                                <div class="-absolute -middle-left">X</div>
+                                <div class="-absolute -middle-center">X</div>
+                                <div class="-absolute -middle-right">X</div>
+
+                                <div class="-absolute -bottom-left">X</div>
+                                <div class="-absolute -bottom-center">X</div>
+                                <div class="-absolute -bottom-right">X</div>
+
+                                <div class="-absolute -top-left-outside">X</div>
+                                <div class="-absolute -top-center-outside">X</div>
+                                <div class="-absolute -top-right-outside">X</div>
+
+                                <div class="-absolute -right-top-outside">X</div>
+                                <div class="-absolute -right-center-outside">X</div>
+                                <div class="-absolute -right-bottom-outside">X</div>
+
+                                <div class="-absolute -bottom-left-outside">X</div>
+                                <div class="-absolute -bottom-center-outside">X</div>
+                                <div class="-absolute -bottom-right-outside">X</div>
+
+                                <div class="-absolute -left-top-outside">X</div>
+                                <div class="-absolute -left-center-outside">X</div>
+                                <div class="-absolute -left-bottom-outside">X</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2>Positioning Backgrounds</h2>
+            <div class="grid-x -center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Style</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>-bg-repeat</b></td>
+                            <td>background-repeat: repeat;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-bg-cover</b></td>
+                            <td>background-size: cover;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-bg-contain</b></td>
+                            <td>background-size: contain;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <h2>Positioning Texts</h2>
+            <div class="grid-x -center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Style</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>-text-left</b></td>
+                            <td>text-align: left;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-text-center</b></td>
+                            <td>text-align: center;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-text-right</b></td>
+                            <td>text-align: right;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-text-justify</b></td>
+                            <td>text-align: justify;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <h1 id="vis">Visibility</h1>
+            <p>Visibility classes in <b>utilityCSS</b>, enables us to control whether the element is shown or hidden.
+                These classes are usually coupled with <a href="#media">media queries</a>.
+            </p>
+            <div class="grid-x -center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Style</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>-invisible</b></td>
+                            <td>visibility: invisible;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-visible</b></td>
+                            <td>visibility: visible;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-hide</b></td>
+                            <td>display: none;</td>
+                        </tr>
+                        <tr>
+                            <td><b>-hide_[MEDIA QUERY]-only</b></td>
+                            <td>Adds display: none; only to chosen screen size.</td>
+                        </tr>
+                        <tr>
+                            <td><b>-show_[MEDIA QUERY]</b></td>
+                            <td>Adds display: none; to any size below chosen screen size.</td>
+                        </tr>
+                        <tr>
+                            <td><b>-show_[MEDIA QUERY]-only</b></td>
+                            <td>Adds display: none; to any size except the chosen screen size.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <h1 id="print">Print Styles</h1>
+            <p><b>utilityCSS</b> comes with a set of styles for print layout. Using these classes has no effect on
+                normal layout, they only affect when printing is initiated.</p>
+            <div class="grid-x -center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>-print-bw</b></td>
+                            <td>Optimize the element for black and white printing.</td>
+                        </tr>
+                        <tr>
+                            <td><b>-break-before</b></td>
+                            <td>Adds a page break before the element.</td>
+                        </tr>
+                        <tr>
+                            <td><b>-break-after</b></td>
+                            <td>Adds a page break after the element.</td>
+                        </tr>
+                        <tr>
+                            <td><b>-break-avoid</b></td>
+                            <td>Avoids breaking the page inside the element.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <h1 id="media">Media Queries</h1>
+            <p>Media queries are a way of defining styles based on certain browser conditions, mostly used for defining
+                unique styles for different screen sizes so that the layout can adapt to devices with small screens such
+                as mobile phones or with bigger screens like a television. In web development, we use the term
+                "responsiveness" to define this capability.</p>
+            <p><b>utilityCSS</b> comes with a set of media queries for each property class mentioned above, so
+                that different classes can be activated for different screen sizes.</p>
+            <p>Use suffix <b>_medium</b> for any property class to be activated for only the devices with screen width
+                above 40em (640px) or <b>_large</b> for screen width above 64em (1024px).</p>
+            <p>Additionally, there is <b>_print</b> suffix for only activating property classes for print layout.</p>
+            <div class="grid-x -center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Media Query</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>[PROPERTY CLASS]_medium</b></td>
+                            <td>For screen sizes above 40em (640px).</td>
+                        </tr>
+                        <tr>
+                            <td><b>[PROPERTY CLASS]_large</b></td>
+                            <td>For screen sizes above 64em (1024px).</td>
+                        </tr>
+                        <tr>
+                            <td><b>[PROPERTY CLASS]_print</b></td>
+                            <td>For print layout only.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Example is given below, minimize your browser and resize it to activate different classes.</p>
+            <div class="grid-x -left -center_medium -debug">
+                <div class="cell -8 -6_medium -4_large">
+                    cell -8 -6_medium -4_large
+                </div>
+                <div class="cell -auto -show_large">
+                    This cell will only shown on large and above screens
+                </div>
+                <div class="cell -6 -4_medium -2_large -right_large">
+                    cell -6 -4_medium -2_large -right_large
+                </div>
+            </div>
+            <pre><code>
+                &lt;div class="grid-x -left -center_medium -debug">
+                    &lt;div class="cell -8 -6_medium -4_large">
+                        cell -8 -6_medium -4_large
+                    &lt;/div>
+                    &lt;div class="cell -auto -show_large">
+                        This cell will only shown on large and above screens
+                    &lt;/div>
+                    &lt;div class="cell -6 -4_medium -2_large -right_large">
+                        cell -6 -4_medium -2_large -right_large
+                    &lt;/div>
+                &lt;/div>
+            </code></pre>
+        </div>
+    </div>
+
+    <script>
+        function trimPreCode() {
+            var i, elems = document.querySelectorAll("pre code"), elemsLen = elems.length, elem, html, pattern;
+            for (i = 0; i < elemsLen; i++) {
+                elem = elems[i];
+                html = elem.innerHTML;
+                pattern = html.match(/\s*\n[\t\s]*/);
+                elem.innerHTML = html.replace(new RegExp(pattern, "g"), '\n').trim();
+                elem.parentNode.innerHTML = elem.parentNode.innerHTML.trim();
+            }
+        }
+        trimPreCode();
+    </script>
+</body>
+
+</html>
