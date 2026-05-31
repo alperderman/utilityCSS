@@ -40,16 +40,17 @@
                 <li>lastly media queries (medium, large and print) that can be used for all of the features mentioned
                     above</li>
             </ul>
-            <p><b>utilityCSS</b> only gives you the basic tools and it tries to be as "unopinionated" as possible, so
-                it <b>DOESN'T</b> include any design specific
-                styles, such as:</p>
+            <p><b>utilityCSS</b> might look barebones but it is done in purpose, it only gives you <b>THE MOST
+                    NECESSARY</b> classes applicable for any kind of design, and so it <b>DOESN'T</b> include design
+                specific styles, such as:</p>
             <ul>
+                <li>any kind of pre-made components (cards, modals, tooltips etc..)</li>
                 <li>text and background colors (except for the print layout)</li>
-                <li>sizing classes</li>
+                <li>font styles and such</li>
+                <li>sizing classes (except in grid)</li>
                 <li>display classes (except display none included in visibility classes)</li>
-                <li>margin, padding, border classes</li>
+                <li>margin (except in grid), padding, border classes</li>
                 <li>box and text shadows</li>
-                <li>any kind of pre-made components (such as cards, modals, tooltips etc..)</li>
             </ul>
             <h1 class="-text-center">Table of Contents</h1>
             <div class="grid-x -center">
@@ -71,7 +72,7 @@
                 the elements of your
                 website. Classes are diluted and always serves a meaningful purpose that tackles each and every single
                 edge-case.</p>
-            <p>As mentioned before the inspiration for this grid system comes from <a target="_blank"
+            <p>As mentioned before, the inspiration for this grid system comes from <a target="_blank"
                     href="https://get.foundation/sites/docs/xy-grid.html">Foundation</a>, and what I mean by inspiration
                 is; only some of the class names, seperation of rows (grid-x) and columns (grid-y) and media query
                 sizes. Other than that, all of the CSS properties are completely different under the hood and
@@ -161,8 +162,9 @@
                 in our daily lives, for example it is the same reason why we have 12/24 hour clock cycles and 12
                 months.
             </p>
-            <p>As you might noticed, there are also <b>-auto</b> and <b>-fill</b> classes. <b>-auto</b> sets the size
-                dynamically based on the content in the cell and <b>-fill</b> as the name suggests, fills the remaining
+            <p>Apart from the sizing classes, as you might noticed, there are also <b>-auto</b> and <b>-fill</b>
+                classes. <b>-auto</b> sets the size
+                dynamically based on the content in the cell and <b>-fill</b>, as the name suggests, fills the remaining
                 row or
                 column (depending on if it is <b>grid-x</b> or <b>grid-y</b>). Lastly, a <b>cell</b> without any sizing
                 classes will act like as if they have <b>-auto</b> class.</p>
@@ -170,15 +172,15 @@
                 both grids
                 and cells have max-width and max-height of 100% and overflow is set to auto, so that they can
                 accommodate overflowing children without any data loss.</p>
-            <p>There are few things to consider, <b>grid-y</b> which is flex column, needs a height property in
-                order to work, that is because, cells are defined with percentage values (except <b>-auto</b> and
-                <b>-fill</b> as they are special). And in CSS, percentage values
+            <p>There are few things to consider. <b>grid-y</b> which is flex column, needs a height property in
+                order to work. That is because, cells are defined with percentage values (except <b>-auto</b> and
+                <b>-fill</b> as they are special), and in CSS, percentage values
                 are based on the size of the parent element. So if
                 you don't set a height to the <b>grid-y</b> element, cells cannot get a reference point for
-                percentage, In the example, we used <b>-frame-y</b> class to set the grid height to viewport, which most
+                percentage. In the example, we used <b>-frame-y</b> class to set the grid height to viewport, which most
                 of the time thats what it is needed, but might not always be applicable depending on what you are
                 actually
-                designing. For <b>grid-x</b> element, you don't need to set a width because, by default flexbox
+                designing. For <b>grid-x</b> element, you don't need to set a width, because by default flexbox
                 layout behaves like a block element which automatically takes up all the width space of the parent.
             </p>
             <hr>
@@ -189,7 +191,7 @@
                 <b>-top</b>, <b>-left</b>, <b>-center</b>... classes, so that it can be understood easier at first
                 glance.
             </p>
-            <p>It is not included in the list below, but <b>-debug</b> property class can be attached to any element to
+            <p>It is not included in the list below but, <b>-debug</b> property class can be attached to any element to
                 see their borders just like in the examples. Borders are color coded; blue for grids, cyan for cells and
                 red for everything else.</p>
             <h3>Grid Property Classes</h3>
@@ -229,7 +231,7 @@
                     <tr>
                         <td><b>-wrap</b></td>
                         <td>Automatically divide cells into multiple rows or columns when they exceed
-                            the grid size (Default).</td>
+                            the grid size.</td>
                     </tr>
                     <tr>
                         <td><b>-nowrap</b></td>
@@ -241,7 +243,7 @@
                     </tr>
                     <tr>
                         <td><b>-left</b></td>
-                        <td>Horizontally aligns the cells to left (Default).</td>
+                        <td>Horizontally aligns the cells to left.</td>
                     </tr>
                     <tr>
                         <td><b>-center</b></td>
@@ -359,7 +361,8 @@
                     </tr>
                     <tr>
                         <td><b>-stretch</b></td>
-                        <td>Stretches out the cell in opposite direction of grid. It is default option and if it is used
+                        <td>Stretches out the cell in opposite direction of grid. It is the default option and if it is
+                            used
                             with other positioning classes <b>-stretch</b> will cancel them out depending on if it is
                             grid-x or grid-y.</td>
                     </tr>
